@@ -40,10 +40,10 @@ MOVES = {
 }
 
 BULLET_MOVES = {
-    2: "left",
-    3: "right",
-    0: "up",
-    1: "down",
+    "j": "left",
+    "l": "right",
+    "i": "up",
+    "k": "down",
 }
 
 #
@@ -134,7 +134,7 @@ def draw(game, images):
     
     if game.with_bullets==True and game.level_number==2:
         cv2.putText(frame,
-            str("press arrow keys"),
+            str("""press "i""j""k""l" """),
             org=(730, 450),
             fontFace=cv2.FONT_HERSHEY_SIMPLEX,
             fontScale=0.8,
@@ -190,8 +190,8 @@ def handle_keyboard(game):
         game.status = "exited"
     if key in MOVES:
         move_player(game, MOVES[key])
-    if code in BULLET_MOVES:
-        create_bullets(game, BULLET_MOVES[code])
+    if key in BULLET_MOVES:
+        create_bullets(game, BULLET_MOVES[key])
         
 
 # game starts
